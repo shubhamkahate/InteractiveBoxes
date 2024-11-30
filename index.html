@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Boxes</title>
+    <link rel="stylesheet" href="style.css">
+<body>
+    <div class="box" id="box1">
+        click to expand
+        <div class="options">
+            <button class="button" onclick="changeColor('box1', 'red')">Red</button>
+            <button class="button" onclick="changeColor('box1', 'green')">Green</button>
+            <button class="button" onclick="changeSize('box1', 'small')">Small</button>
+            <button class="button" onclick="changeSize('box1', 'large')">Large</button>
+        </div>
+    </div>
+
+    <div class="box" id="box2">
+        click to expand
+        <div class="options">
+            <button class="button" onclick="changeColor('box2', 'blue')">Blue</button>
+            <button class="button" onclick="changeColor('box2', 'yellow')">Yellow</button>
+            <button class="button" onclick="changeSize('box2', 'small')">Small</button>
+            <button class="button" onclick="changeSize('box2', 'large')">Large</button>
+        </div>
+    </div>
+
+    <div class="box" id="box3">
+        click to expand
+        <div class="options">
+            <button class="button" onclick="changeColor('box3', 'purple')">Purple</button>
+            <button class="button" onclick="changeColor('box3', 'orange')">Orange</button>
+            <button class="button" onclick="changeSize('box3', 'small')">Small</button>
+            <button class="button" onclick="changeSize('box3', 'large')">Large</button>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.box').forEach(box => {
+            box.addEventListener('click', () => {
+                box.classList.toggle('expanded');
+            });
+        });
+
+        function changeColor(boxId, color) {
+            const box = document.getElementById(boxId);
+            box.style.backgroundColor = color;
+        }
+
+        function changeSize(boxId, size) {
+            const box = document.getElementById(boxId);
+            if (size === 'small') {
+                box.style.width = '200px';
+                box.style.height = box.classList.contains('expanded') ? '150px' : '75px';
+            } else if (size === 'large') {
+                box.style.width = '400px';
+                box.style.height = box.classList.contains('expanded') ? '300px' : '150px';
+            }
+        }
+    </script>
+</body>
+</html>
